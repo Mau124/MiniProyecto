@@ -40,10 +40,74 @@ public  class StudentDB {
             }
         } catch (SQLException e)
         {
-            System.out.println("Error en la consulta");
+            System.out.println("Error " + e.getMessage());
             return null;
         }
         
         return students;
+    }
+    
+    public boolean addStudent(Student student)
+    {
+        try 
+        {
+            String sql = "INSERT INTO student(Register, Name, LastName, IDCity, IDCarer)"
+                    + " VALUES(?, ?, ?, ?, ?)";
+            
+            PreparedStatement stmt = db.getCon().prepareStatement(sql);
+            stmt.setString(1, student.getRegister());
+            stmt.setString(2, student.getName());
+            stmt.setString(3, student.getLastName());
+            stmt.setInt(4, student.getIDCity());
+            stmt.setInt(5, student.getIDCarer());
+            
+            stmt.executeUpdate();
+        } catch (SQLException e)
+        {
+            System.out.println("Error " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean updateStudent(String register, Student student)
+    {
+        try
+        {
+            String sql = "UPDATE student SET Name = ?, LastName = ?, IDCity = ?, "
+                    + "IDCarer = ? WHERE Register = ?";
+            
+            PreparedStatement stmt = db.getCon().prepareStatement(sql);
+            stmt.setString(1, student.getName());
+            stmt.setString(2, student.getLastName());
+            stmt.setInt(3, student.getIDCity());
+            stmt.setInt(4, student.getIDCarer());
+            stmt.setString(5, register);
+            
+            stmt.executeUpdate();
+        } catch (SQLException e)
+        {
+            System.out.println("Error " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean deleteStudent(String register)
+    {
+        try 
+        {
+            String sql = "DELETE FROM student WHERE register = ?";
+            
+            PreparedStatement stmt = db.getCon().prepareStatement(sql);
+            stmt.setString(1, register);
+            
+            stmt.executeUpdate();
+        } catch (SQLException e)
+        {
+            System.out.println("Error " + e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

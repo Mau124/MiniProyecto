@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Agregar estudiante</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Agregar estudiante</h1>
+            </div>
+        </div>
+        
+        <div class="container">
+            <form action="AddStudentController" method="GET">
+                <div class="form-group">
+                    <label for="register">Registro</label>
+                    <input type="text" class="form-control" id="register" name="register">
+                </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Apellido</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName">
+                </div>
+                <div class="form-group">
+                    <label for="codeCity">Cogigo de ciudad</label>
+                    <input type="text" class="form-control" id="codeCity" name="codeCity">
+                </div>
+                <div class="form-group">
+                    <label for="codeCarer">Codigo de carrera</label>
+                    <input type="text" class="form-control" id="codeCarer" name="codeCarer">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

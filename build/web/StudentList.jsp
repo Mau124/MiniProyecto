@@ -32,31 +32,53 @@
             } else {
         %>
         
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                  <th scope="col">Registro</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Lista de estudiantes</h1>
+            </div>
+        </div>
+        
+        <div class="container">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Registro</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellido</th>
+                      <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
                 
        <%
             for (Student s : students) {
+                String routeUpdate = "UpdateStudent.jsp?register=" + s.getRegister() + ""
+                        + "&name=" + s.getName() + "&lastName=" + s.getLastName() + ""
+                        + "&codeCity=" + s.getIDCity() + "&codeCarer=" + s.getIDCarer();
+                
+                String routeDelete = "DeleteStudentController?register=" + s.getRegister();
         %>
         
                 <tr>
                   <td><%= s.getRegister() %></td>
                   <td><%= s.getName() %></td>
                   <td><%= s.getLastName() %></td>
+                  <td>
+                      <a class="btn btn-warning" href="<%= routeUpdate %>" role="button">Actualizar</a>
+                      <a class="btn btn-danger" href="<%= routeDelete %>" role="button">Eliminar</a>
+                  </td>
                 </tr>
             
         <%      }   
             }
         %>
                 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        
+            <a class="btn btn-success" href="AddStudent.html" role="button">Agregar</a>
+        
+        </div>
+        
     </body>
 </html>
