@@ -23,6 +23,12 @@ public class Optional {
         this.credits = credits;
         this.IDCarer = IDCarer;
     }
+    
+    public Optional(String name, int credits, int IDCarer) {
+        this.name = name;
+        this.credits = credits;
+        this.IDCarer = IDCarer;
+    }
 
     public int getIDOptional() {
         return IDOptional;
