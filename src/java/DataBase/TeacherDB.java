@@ -77,7 +77,32 @@ public class TeacherDB {
         }
     }
     //Eliminar
-    /*public boolean Eliminar(Teacher Maestro) throws SQLException{
-        
-    }*/
+    public boolean Eliminar(Teacher Maestro) throws SQLException{
+     boolean rowEliminar = false;
+     try{
+         PreparedStatement stmt = db.getCon().prepareStatement("DELETE FROM Teacher WHERE IDTeacher = ?");
+         stmt.setInt(1, Maestro.getIDTeacher());
+         rowEliminar = stmt.executeUpdate()>0;
+         stmt.close();
+         db.getCon().close();
+         return rowEliminar;
+     }catch(SQLException e){
+         System.out.println("Error en la consulta");
+         return rowEliminar;
+     }
+    }
+    
+    public Teacher obtenerPorID(int id) throws SQLException{
+        Teacher maestro = null;
+        PreparedStatement stmt = db.getCon().prepareStatement("SELECT * FROM Teacher WHERE IDTeacher = ?");
+        stmt.setInt(1, id);
+        ResultSet res = stmt.executeQuery();
+        if(res.next()){
+            maestro = new Teacher(res.getInt("IDTeacher"),res.getString("Name"),res.getString("LastName"),res.getInt("IDAcademy"));
+            
+        }
+        res.close();
+        db.getCon().close();
+        return maestro;
+    }
 }
