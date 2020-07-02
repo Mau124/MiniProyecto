@@ -40,19 +40,26 @@ public class TeacherDB {
     public ArrayList<Teacher> ListarMaestros() throws SQLException{
         ArrayList<Teacher> listaMaestros = new ArrayList<Teacher>();
         ResultSet result;
+        
+        
         try{
             PreparedStatement stmt = db.getCon().prepareStatement("SELECT * FROM Teacher");
             result = stmt.executeQuery();
             while(result.next()){
+                
             Teacher Maestro = new Teacher();
             Maestro.setIDAcademy(result.getInt("IDTeacher"));
             Maestro.setName(result.getString("Name"));
             Maestro.setLastName(result.getString("LastName"));
             Maestro.setIDAcademy(result.getInt("IDAcademy"));
+            
             listaMaestros.add(Maestro);
+            
             }
             db.getCon().close();
             return listaMaestros;
+            
+            
         }catch(SQLException e){
             System.out.println("Error en la consulta");
                     return null;
@@ -62,7 +69,7 @@ public class TeacherDB {
     public boolean Actualizar(Teacher Maestro) throws SQLException{
         boolean rowActualizar = false;
         try{
-        PreparedStatement stmt = db.getCon().prepareStatement("UPDATE Teacher SET IDTeacher=?,Name=?,LastName=?,IDAcademy=?");
+        PreparedStatement stmt = db.getCon().prepareStatement("UPDATE Teacher SET Name=?,LastName=?,IDAcademy=?");
         stmt.setInt(1, Maestro.getIDTeacher());
         stmt.setString(2,Maestro.getName());
         stmt.setString(3, Maestro.getLastName());

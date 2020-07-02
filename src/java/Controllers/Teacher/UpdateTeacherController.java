@@ -43,12 +43,12 @@ public class UpdateTeacherController extends HttpServlet {
             
             TeacherDB DB = new TeacherDB();
             
-            int ID = Integer.parseInt(request.getParameter("IDTeacher"));
+            int IDTeacher = Integer.parseInt(request.getParameter("IDTeacher"));
             String name = request.getParameter("name");
             String lastName = request.getParameter("lastName");
             int IDAcademy = Integer.parseInt(request.getParameter("Academy"));
             
-            Teacher tea = new Teacher(ID, name, lastName, IDAcademy);
+            Teacher tea = new Teacher(IDTeacher, name, lastName, IDAcademy);
             
             if (DB.Actualizar(tea))
             {

@@ -78,7 +78,7 @@ public class AddTeacherController extends HttpServlet {
                 out.println("</div>");
             }
             
-            out.println("<a href=\"StudentList.jsp\">Regresar</a>");
+            out.println("<a href=\"TeacherList.jsp\">Regresar</a>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

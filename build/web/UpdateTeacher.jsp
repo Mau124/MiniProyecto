@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Modificar estudiante</title>
+        <title>Modificar maestro</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  crossorigin="anonymous">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,14 +21,14 @@
         </div>
         
         <% 
-            int ID = Integer.parseInt(request.getParameter("IDTeacher"));
+            int IDTeacher = Integer.parseInt(request.getParameter("IDTeacher"));
             String name = request.getParameter("name");
             String lastName = request.getParameter("lastName");
             int IDAcademy = Integer.parseInt(request.getParameter("Academy"));
         %>
         
         <div class="container">
-            <form action="UpdateStudentController" method="GET">
+            <form action="UpdateTeacherController" method="GET">
                 <div class="form-group">
                     <label for="IDTeacher">ID</label>
                     <input type="text" class="form-control" id="register" name="IDTeacher" readonly value="<%= request.getParameter("IDTeacher") %>">
@@ -42,8 +42,8 @@
                     <input type="text" class="form-control" id="lastName" name="lastName" value="<%= request.getParameter("lastName") %>">
                 </div>
                 <div class="form-group">
-                    <label for="Academy">Clave de ciudad</label>
-                    <input type="text" class="form-control" id="codeCity" name="Academy" value="<%= request.getParameter("IDAcademy") %>">
+                    <label for="Academy">Codigo de Academia</label>
+                    <input type="text" class="form-control" id="codeCity" name="Academy" value="<%= request.getParameter("Academy") %>">
                 </div>
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>

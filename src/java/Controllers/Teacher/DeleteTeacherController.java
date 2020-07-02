@@ -42,9 +42,9 @@ private boolean result;
             
             TeacherDB DB = new TeacherDB();
             
-            int ID = Integer.parseInt(request.getParameter("IDTeacher"));
+            int IDTeacher = Integer.parseInt(request.getParameter("IDTeacher"));
             
-            if (DB.Eliminar(ID))
+            if (DB.Eliminar(IDTeacher))
             {
                 result = true;
             } else 
