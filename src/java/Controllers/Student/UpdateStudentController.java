@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package Controllers.Student;
 
+import DataBase.StudentDB;
+import Models.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,16 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DataBase.DataBaseClass;
-import DataBase.StudentDB;
-import Models.Student;
-
 /**
  *
  * @author Andres
  */
-@WebServlet(name = "AddStudentController", urlPatterns = {"/AddStudentController"})
-public class AddStudentController extends HttpServlet {
+@WebServlet(name = "UpdateStudentController", urlPatterns = {"/UpdateStudentController"})
+public class UpdateStudentController extends HttpServlet {
     private boolean result;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,6 +35,7 @@ public class AddStudentController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             
             StudentDB student = new StudentDB();
             
@@ -48,7 +47,7 @@ public class AddStudentController extends HttpServlet {
             
             Student stu = new Student(register, name, lastName, IDCity, IDCarer);
             
-            if (student.addStudent(stu))
+            if (student.updateStudent(register, stu))
             {
                 result = true;
             } else 

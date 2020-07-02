@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package Controllers.Optional;
 
-import DataBase.StudentDB;
-import Models.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,12 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DataBase.DataBaseClass;
+import DataBase.OptionalDB;
+import Models.Optional;
 /**
  *
  * @author Andres
  */
-@WebServlet(name = "UpdateStudentController", urlPatterns = {"/UpdateStudentController"})
-public class UpdateStudentController extends HttpServlet {
+@WebServlet(name = "AddOptionalController", urlPatterns = {"/AddOptionalController"})
+public class AddOptionalController extends HttpServlet {
     private boolean result;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,20 +38,18 @@ public class UpdateStudentController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            StudentDB student = new StudentDB();
+            OptionalDB optional = new OptionalDB();
             
-            String register = request.getParameter("register");
             String name = request.getParameter("name");
-            String lastName = request.getParameter("lastName");
-            int IDCity = Integer.parseInt(request.getParameter("codeCity"));
+            int credits = Integer.parseInt(request.getParameter("credits"));
             int IDCarer = Integer.parseInt(request.getParameter("codeCarer"));
             
-            Student stu = new Student(register, name, lastName, IDCity, IDCarer);
+            Optional opt = new Optional(name, credits, IDCarer);
             
-            if (student.updateStudent(register, stu))
+            if (optional.addOptional(opt))
             {
                 result = true;
-            } else 
+            } else
             {
                 result = false;
             }
@@ -58,7 +57,7 @@ public class UpdateStudentController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Agregar estudiante</title>");  
+            out.println("<title>Agregar materia Opcional</title>");  
             out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body>");
@@ -76,7 +75,7 @@ public class UpdateStudentController extends HttpServlet {
                 out.println("</div>");
             }
             
-            out.println("<a href=\"StudentList.jsp\">Regresar</a>");
+            out.println("<a href=\"OptionalList.jsp\">Regresar</a>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

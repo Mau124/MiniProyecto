@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package Controllers.Student;
 
-import DataBase.StudentDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,12 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DataBase.DataBaseClass;
+import DataBase.StudentDB;
+import Models.Student;
+
 /**
  *
  * @author Andres
  */
-@WebServlet(name = "DeleteStudentController", urlPatterns = {"/DeleteStudentController"})
-public class DeleteStudentController extends HttpServlet {
+@WebServlet(name = "AddStudentController", urlPatterns = {"/AddStudentController"})
+public class AddStudentController extends HttpServlet {
     private boolean result;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +37,18 @@ public class DeleteStudentController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
             StudentDB student = new StudentDB();
             
             String register = request.getParameter("register");
+            String name = request.getParameter("name");
+            String lastName = request.getParameter("lastName");
+            int IDCity = Integer.parseInt(request.getParameter("codeCity"));
+            int IDCarer = Integer.parseInt(request.getParameter("codeCarer"));
             
-            if (student.deleteStudent(register))
+            Student stu = new Student(register, name, lastName, IDCity, IDCarer);
+            
+            if (student.addStudent(stu))
             {
                 result = true;
             } else 
@@ -51,7 +59,7 @@ public class DeleteStudentController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Eliminar estudiante</title>");  
+            out.println("<title>Agregar estudiante</title>");  
             out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body>");
