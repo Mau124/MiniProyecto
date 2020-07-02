@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/52333/Desktop/Repos/MiniProyecto/src/java/Models/Teacher.java</file>
+            <file>file:/C:/Users/52333/Desktop/Repos/MiniProyecto/src/java/Controllers/Crear_Actualizar_Eliminar_Teacher.java</file>
+            <file>file:/C:/Users/52333/Desktop/Repos/MiniProyecto/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/52333/Desktop/Repos/MiniProyecto/src/java/DataBase/TeacherDB.java</file>
+            <file>file:/C:/Users/52333/Desktop/Repos/MiniProyecto/web/vista/mostrar.jsp</file>
+        </group>
     </open-files>
 </project-private>

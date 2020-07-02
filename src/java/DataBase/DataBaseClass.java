@@ -19,7 +19,7 @@ public class DataBaseClass {
     {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://PC;databaseName=MiniProyecto;user=sql_user;password=123");
+            con = DriverManager.getConnection("jdbc:sqlserver://ANGEL;databaseName=MiniProyecto;user=sql_user;password=123");
         } catch (ClassNotFoundException | SQLException e)
         {
             System.out.println("Error al cargar el driver " + e.getMessage());

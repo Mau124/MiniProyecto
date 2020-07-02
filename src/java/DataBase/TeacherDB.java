@@ -37,8 +37,8 @@ public class TeacherDB {
     }
     //Listar todos los maestros
     
-    public List<Teacher> ListarMaestros() throws SQLException{
-        List<Teacher> listaMaestros = new ArrayList<Teacher>();
+    public ArrayList<Teacher> ListarMaestros() throws SQLException{
+        ArrayList<Teacher> listaMaestros = new ArrayList<Teacher>();
         ResultSet result;
         try{
             PreparedStatement stmt = db.getCon().prepareStatement("SELECT * FROM Teacher");
@@ -77,11 +77,11 @@ public class TeacherDB {
         }
     }
     //Eliminar
-    public boolean Eliminar(Teacher Maestro) throws SQLException{
+    public boolean Eliminar(int Maestro) throws SQLException{
      boolean rowEliminar = false;
      try{
          PreparedStatement stmt = db.getCon().prepareStatement("DELETE FROM Teacher WHERE IDTeacher = ?");
-         stmt.setInt(1, Maestro.getIDTeacher());
+         stmt.setInt(1, Maestro);
          rowEliminar = stmt.executeUpdate()>0;
          stmt.close();
          db.getCon().close();
